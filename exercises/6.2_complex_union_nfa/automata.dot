@@ -1,0 +1,33 @@
+digraph finite_automata {
+  rankdir=LR;
+  
+  node [shape = point]; init;
+  node [shape = doublecircle]; q5 q10;
+  node [shape = circle];
+
+  init -> q0;
+  
+  // Epsilon transitions from start
+  q0 -> q1 [label = "ε"];
+  q0 -> q6 [label = "ε"];
+  q0 -> q8 [label = "ε"];
+  
+  // Path 1: (a|b)*cbb(a|b)+
+  q1 -> q1 [label = "a,b"];
+  q1 -> q2 [label = "c"];
+  q2 -> q3 [label = "b"];
+  q3 -> q4 [label = "b"];
+  q4 -> q5 [label = "a,b"];
+  q5 -> q5 [label = "a,b"];
+  
+  // Path 2: zbb(a|b)+
+  q6 -> q7 [label = "z"];
+  q7 -> q3 [label = "b"]; // Re-uses part of Path 1's chain
+  
+  // Path 3: dbb
+  q8 -> q9 [label = "d"];
+  q9 -> q10 [label = "b"];
+  q10 -> q10 [label="b" style=invis]; // node for final 'b' transition
+  q9 -> q10 [label = "b"];
+
+}
