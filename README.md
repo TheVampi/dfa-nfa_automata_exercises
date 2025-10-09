@@ -24,7 +24,7 @@ Here is a list of all the exercises solved in this repository.
 Click on any of them to see the complete solution.
 
 **Exercises from the PDF:**
-* [Exercise 1.1: Recognize the string "a"](./exercises/1.1_string_a/)
+* [Exercise 1.1: Recognize the string "a"](./exercises/1.1_recognize_a/)
 * [Exercise 1.2: Even 'a's, odd 'b's](./exercises/1.2_even_a_odd_b/)
 * [Exercise 2.1: Recognize the string "abb"](./exercises/2.1_string_abb/)
 * ... (to be continued)
