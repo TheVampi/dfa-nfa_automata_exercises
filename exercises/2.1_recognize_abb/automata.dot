@@ -1,0 +1,21 @@
+digraph finite_automata {
+  rankdir=LR;
+  
+  node [shape = point]; init;
+  node [shape = doublecircle]; q3;
+  node [shape = circle]; q0 q1 q2 q4;
+
+  init -> q0;
+  
+  q0 -> q1 [label = "a"];
+  q0 -> q4 [label = "b"];
+  
+  q1 -> q4 [label = "a"];
+  q1 -> q2 [label = "b"];
+
+  q2 -> q4 [label = "a"];
+  q2 -> q3 [label = "b"];
+  
+  q3 -> q4 [label = "a,b"];
+  q4 -> q4 [label = "a,b"];
+}
