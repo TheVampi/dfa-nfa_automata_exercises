@@ -1,0 +1,43 @@
+
+name: Generate Automata Diagrams
+
+
+on:
+  push:
+    
+    paths:
+      - 'exercises/**.dot'
+
+
+jobs:
+  generate-svg:
+    
+    runs-on: ubuntu-latest
+
+    
+    steps:
+      
+      - name: Check out the repository
+        uses: actions/checkout@v3
+
+      
+      - name: Install Graphviz
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y graphviz
+
+      
+      - name: Generate SVG files from DOT
+        run: |
+          find exercises -type f -name "*.dot" | while read dotfile; do
+            svgfile="${dotfile%.dot}.svg"
+            echo "Generating $svgfile from $dotfile"
+            dot -Tsvg "$dotfile" -o "$svgfile"
+          done
+
+      
+      - name: Commit and push generated SVG files
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "chore: Auto-generate SVG diagrams"
+          file_pattern: "exercises/**/*.svg"
