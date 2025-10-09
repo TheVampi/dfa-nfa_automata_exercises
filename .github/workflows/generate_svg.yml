@@ -22,6 +22,9 @@ jobs:
 
       - name: Check out the repository
         uses: actions/checkout@v3
+        with:
+
+          fetch-depth: 2
 
 
       - name: Install Graphviz
@@ -39,8 +42,17 @@ jobs:
           done
 
 
+      - name: Get Exercise Name
+        id: get_name
+        run: |
+          # Este comando busca el primer archivo .dot modificado en el último commit,
+          # extrae el nombre de su carpeta y lo guarda en una variable de entorno.
+          echo "EXERCISE_NAME=$(basename $(dirname $(git diff --name-only HEAD~1 HEAD | grep '\.dot$' | head -n 1)))" >> $GITHUB_ENV
+
+
       - name: Commit and push generated SVG files
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: "chore: Auto-generate SVG diagrams"
+
+          commit_message: 'chore: Auto-generate SVG diagrams [${{ env.EXERCISE_NAME }}]'
           file_pattern: "exercises/**/*.svg"
