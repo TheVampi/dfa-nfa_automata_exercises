@@ -1,0 +1,22 @@
+digraph ParseTree {
+    rankdir=TB;
+    node [shape=plaintext];
+    edge [arrowhead=none];
+
+    S [label="S"];
+    t0_1 [label="0"]; Q1 [label="Q1"];
+    t0_2 [label="0"]; Q3_1 [label="Q3"];
+    t1_1 [label="1"]; Q4_1 [label="Q4"];
+    t0_3 [label="0"]; Q3_2 [label="Q3"];
+    t1_2 [label="1"]; Q4_2 [label="Q4"];
+    t0_4 [label="0"]; Q3_3 [label="Q3"];
+    epsilon [label="ε"];
+
+    S -> t0_1; S -> Q1;
+    Q1 -> t0_2; Q1 -> Q3_1;
+    Q3_1 -> t1_1; Q3_1 -> Q4_1;
+    Q4_1 -> t0_3; Q4_1 -> Q3_2;
+    Q3_2 -> t1_2; Q3_2 -> Q4_2;
+    Q4_2 -> t0_4; Q4_2 -> Q3_3;
+    Q3_3 -> epsilon;
+}
