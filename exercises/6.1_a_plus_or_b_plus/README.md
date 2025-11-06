@@ -58,3 +58,38 @@ The 5-tuple `M = (Q, Σ, δ, q₀, F)` that defines this automata is:
 ## 6. Source Files
 * **Graphviz Source:** [View `automata.dot`](./automata.dot)
 * **JFLAP File:** [Download `automata.jff`](./automata.jff)
+
+---
+## 7. Regular Grammar (Type 3)
+This automaton can be converted into an equivalent Type 3 Regular Grammar `G = (V, T, P, S)`:
+* **V (Variables):** `{S, Q1, Q2, Q3}`
+* **T (Terminals):** `{a, b}`
+* **S (Start Symbol):** `S` (which represents `q0`)
+* **P (Production Rules):**
+    * `S → a Q1`
+    * `S → b Q2`
+    * `Q1 → a Q1`
+    * `Q1 → b Q3`
+    * `Q2 → a Q3`
+    * `Q2 → b Q2`
+    * `Q3 → a Q3`
+    * `Q3 → b Q3`
+    * `Q1 → ε`      (because `q1` is an accepting state)
+    * `Q2 → ε`      (because `q2` is an accepting state)
+
+---
+## 8. Derivation Example
+This shows how the grammar generates the accepted string "**bbbbb**".
+
+### Derivation Path
+1.  `S → b Q2`
+2.  `Q2 → b Q2`
+3.  `Q2 → b Q2`
+4.  `Q2 → b Q2`
+5.  `Q2 → b Q2`
+6.  `Q2 → ε`
+
+### Parse Tree
+![Parse Tree Diagram](./parse_tree.svg)
+
+* **Graphviz Source (Parse Tree):** [View `parse_tree.dot`](./parse_tree.dot)
