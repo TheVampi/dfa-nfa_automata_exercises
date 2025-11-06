@@ -60,3 +60,51 @@ The 5-tuple `M = (Q, Σ, δ, q₀, F)` that defines this automata is:
 ## 6. Source Files
 * **Graphviz Source:** [View `automata.dot`](./automata.dot)
 * **JFLAP File:** [Download `automata.jff`](./automata.jff)
+
+---
+## 7. Regular Grammar (Type 3)
+This automaton can be converted into an equivalent Type 3 Regular Grammar `G = (V, T, P, S)`:
+* **V (Variables):** `{S, Q1, Q2, Q3, Q4, Q5, Q6, Q7, Q8, Q9, Q10, Q11}`
+* **T (Terminals):** `{a, b, c, d, z}`
+* **S (Start Symbol):** `S`
+* **P (Production Rules):**
+    * `S → Q1` | `Q6` | `Q9` (from ε-transitions)
+    * `Q1 → a Q1`
+    * `Q1 → b Q1`
+    * `Q1 → c Q2`
+    * `Q2 → b Q3`
+    * `Q3 → b Q4`
+    * `Q4 → a Q5`
+    * `Q4 → b Q5`
+    * `Q5 → a Q5`
+    * `Q5 → b Q5`
+    * `Q6 → z Q7`
+    * `Q7 → b Q8`
+    * `Q8 → b Q4`
+    * `Q9 → d Q10`
+    * `Q10 → b Q11`
+    * `Q5 → ε` (because `q5` is an accepting state)
+    * `Q11 → ε` (because `q11` is an accepting state)
+
+---
+## 8. Derivation Example
+This shows how the grammar generates the accepted string "**aabcbbabab**".
+
+### Derivation Path
+1.  `S → Q1`
+2.  `Q1 → a Q1`
+3.  `Q1 → a Q1`
+4.  `Q1 → b Q1`
+5.  `Q1 → c Q2`
+6.  `Q2 → b Q3`
+7.  `Q3 → b Q4`
+8.  `Q4 → a Q5`
+9.  `Q5 → b Q5`
+10. `Q5 → a Q5`
+11. `Q5 → b Q5`
+12. `Q5 → ε`
+
+### Parse Tree
+![Parse Tree Diagram](./parse_tree.svg)
+
+* **Graphviz Source (Parse Tree):** [View `parse_tree.dot`](./parse_tree.dot)
