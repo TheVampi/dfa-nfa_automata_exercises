@@ -47,3 +47,29 @@ You can view the source code for the diagram or download the JFLAP file using th
 
 * **Graphviz Source:** [View `automata.dot`](./automata.dot)
 * **JFLAP File:** [Download `automata.jff`](./automata.jff)
+---
+
+## 7. Regular Grammar (Type 3)
+This automaton can be converted into an equivalent Type 3 Regular Grammar `G = (V, T, P, S)`:
+* **V (Variables):** `{S, Q1, Q2}`
+* **T (Terminals):** `{a}`
+* **S (Start Symbol):** `S` (which represents `q0`)
+* **P (Production Rules):**
+    * `S → a Q1` 
+    * `Q1 → a Q2`  
+    * `Q2 → a Q2`  
+    * `Q1 → ε`      (because `q1` is an accepting state)
+
+---
+## 8. Derivation Example
+This shows how the grammar generates the accepted string "**a**".
+
+### Derivation Path
+1.  `S → a Q1`
+2.  `Q1 → ε`
+
+
+### Parse Tree
+![Parse Tree Diagram](./parse_tree.svg)
+
+* **Graphviz Source (Parse Tree):** [View `parse_tree.dot`](./parse_tree.dot)
